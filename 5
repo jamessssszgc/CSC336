@@ -1,0 +1,18 @@
+n = 1;
+rel_err = 0;
+cond_num = 0;
+disp('n  relative error   condition number   x-error-norm      r-norm');
+while rel_err < 1
+	H = hilb(n);
+	cond_num = cond(H);
+	x = ones(n,1);
+	b = H*x;
+	x_approx = H\b;
+	x_norm = norm(x,inf);
+	r = b- H*x_approx;
+	r_norm = norm(r,inf);
+	x_err_norm = norm(x-x_approx,inf);
+	rel_err = x_err_norm/x_norm;
+	fprintf('%d  %e      %e      %e     %e\n',n, rel_err, cond_num, x_err_norm, r_norm);
+	n = n + 1;
+end

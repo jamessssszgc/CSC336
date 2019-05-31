@@ -1,0 +1,75 @@
+function y = perm_a(p,x)
+    y = x;
+    for idx = 1:length(p)
+        element = p(idx);
+        temp_row = y(idx,:);
+        y(idx,:)  = y(element,:);
+        y(element,:) = temp_row;
+    end
+end
+
+
+function q = perm_b(p)
+    q = [1:length(p)+1];
+    for idx = 1:length(p)
+        element = p(idx);
+        display(element);
+        q(element) = q(idx);
+        q(idx) = swap;
+    end
+end
+
+
+function y = perm_c(q,x)
+    y = x;
+    for idx = 1:length(q)
+        element = q(idx);
+        y(idx,:) = x(element,:);
+    end
+end
+
+
+
+>> p = [3 5 9 4 10 8 7 9 10]
+
+p =
+
+     3     5     9     4    10     8     7     9    10
+
+>> x=[1:10]';
+>> y1 = perm_a(p,x)
+
+y1 =
+
+     3
+     5
+     9
+     4
+    10
+     8
+     7
+     1
+     2
+     6
+
+>> q = perm_b(p)
+
+q =
+
+     3     5     9     4    10     8     7     1     2     6
+
+
+>> y2 = perm_c(q,x)
+
+y2 =
+
+     3
+     5
+     9
+     4
+    10
+     8
+     7
+     1
+     2
+     6

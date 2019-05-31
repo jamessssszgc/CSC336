@@ -1,0 +1,15 @@
+x_old = 1;
+x = 2;
+n = 0;
+fprintf('n        x(n)              x(n)- sqrt(2)\n');
+format = '%d    %1.15f  %1.15f\n';
+while n <= 5    
+    f = x^2 - 2;
+    f_old = x_old^2 -2;
+    x_new = x - f*((x-x_old)/(f-f_old));
+    x_old = x;
+    x = x_new;
+    r = x - sqrt(2);
+    fprintf(format, n,x,r);
+    n = n + 1;
+end
